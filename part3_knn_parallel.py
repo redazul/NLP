@@ -74,8 +74,6 @@ def evaluate_metrics(true_labels, predicted_labels):
     print("Metrics evaluated.")
     return accuracy, precision, recall, f1_score
 
-# Main execution block remains the same as before
-
 # Main execution
 if __name__ == "__main__":
     # Download necessary NLTK datasets

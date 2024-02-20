@@ -57,13 +57,6 @@ def calculate_prior(n_gram_counts, alpha, vocabulary_size):
     total_possible_n_grams = len(n_gram_counts) + alpha * vocabulary_size
     return 1 / total_possible_n_grams
 
-# Since the evidence or marginal likelihood P(D) might depend on the entire dataset's probabilities,
-# and you're using pre-calculated probabilities, calculating evidence accurately might not be straightforward.
-# You might need to adjust this calculation based on your specific requirements or assumptions about the distribution of probabilities.
-
-# For this example, let's proceed with calculating the posterior probability using pre-calculated likelihoods and a simplified approach for prior and evidence.
-
-# Assuming some setup variables are defined, such as vocabulary_size and alpha
 
 ALPHAS = [1, 0.1, 0.01]
 
@@ -75,29 +68,23 @@ for alpha in ALPHAS:
     vocabulary_size = len(set(trigram_probabilities.keys()))
 
 
-    # Now, let's assume you have observed a trigram and want to calculate its posterior probability
     observed_trigram = ('few', 'newer', 'homes')  # This is the data D
 
     # Calculate likelihood using pre-calculated probabilities
     likelihood = calculate_likelihood_from_csv(trigram_probabilities, observed_trigram, alpha, vocabulary_size)
 
-    # For demonstration purposes, let's simplify prior and evidence calculations
     prior = calculate_prior(Counter(trigram_probabilities.keys()), alpha, vocabulary_size)
-    # Simplified evidence calculation as an example
-    evidence = 1  # This is a placeholder; in practice, calculate this based on your model's needs
+    
+    evidence = 1  
 
     # Calculate the posterior probability using Bayes' Theorem
     posterior = likelihood * prior / evidence
 
     print(f"Posterior probability of the trigram {observed_trigram}: {posterior}")
 
-
-    # Assuming 'sentences' is a list of tokenized sentences for testing
-    # For example, this could be a small subset of sentences from your corpus
     test_sentences = [['few', 'newer', 'homes']]
 
     
-
-    # Now call calculate_perplexity correctly
+    #calculate_perplexity
     perplexity = calculate_perplexity(trigram_probabilities, test_sentences)
     print(f"Perplexity of the model with alpha({alpha}) : {perplexity}")
