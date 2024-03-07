@@ -1,17 +1,18 @@
 import pandas as pd
-import nltk
-from collections import Counter
-
-from nltk.tokenize import word_tokenize
+import numpy as np
+import tensorflow as tf
+from sklearn.model_selection import train_test_split
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Embedding, Flatten, Dense, Dropout
 from tensorflow.keras.regularizers import l1_l2
-from sklearn.model_selection import train_test_split
-import tensorflow as tf
+from tensorflow.keras.regularizers import l1
+from tensorflow.keras.regularizers import l2
+import datetime
+import json
 
-nltk.download('punkt')
+
 
 # Read final_processed_sentences.csv
 final_processed_sentences = pd.read_csv('final_processed_sentences.csv', header=None)
@@ -19,127 +20,139 @@ final_processed_sentences = pd.read_csv('final_processed_sentences.csv', header=
 # Read sentiments.csv
 sentiments = pd.read_csv('sentiments.csv', header=None)
 
-# Initialize empty lists to store sentences
-positive_sentences_list = []
-negative_sentences_list = []
+# Preprocess the data
+X = final_processed_sentences[0].values
+y = sentiments[0].apply(lambda x: 1 if x == 'positive' else 0).values  # Convert sentiment strings to binary labels
 
-# Iterate through indices of sentiments
-for index, sentiment in sentiments.iterrows():
-    if sentiment[0] == "positive":
-        positive_sentences_list.append(final_processed_sentences.iloc[index, 0])
-    elif sentiment[0] == "negative":
-        negative_sentences_list.append(final_processed_sentences.iloc[index, 0])
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Tokenize each sentence and flatten the list of tokens for positive sentences
-positive_tokens = [word for sentence in positive_sentences_list for word in nltk.word_tokenize(sentence)]
+vocab_size = 10000
 
-# Tokenize each sentence and flatten the list of tokens for negative sentences
-negative_tokens = [word for sentence in negative_sentences_list for word in nltk.word_tokenize(sentence)]
+# Tokenize the text data
+tokenizer = Tokenizer(num_words=vocab_size)  # Vocabulary size
+tokenizer.fit_on_texts(X_train)
+X_train_seq = tokenizer.texts_to_sequences(X_train)
+X_test_seq = tokenizer.texts_to_sequences(X_test)
 
-# Count the frequency of each word for positive sentences
-positive_word_frequency = Counter(positive_tokens)
-
-# Count the frequency of each word for negative sentences
-negative_word_frequency = Counter(negative_tokens)
-
-# Extract just the words from sorted word frequency lists
-sorted_positive_words = [word for word, _ in positive_word_frequency.most_common()]
-sorted_negative_words = [word for word, _ in negative_word_frequency.most_common()]
-
-# Find common words in positive and negative lists
-common_words = set(sorted_positive_words).intersection(set(sorted_negative_words))
-
-# Initialize dictionary to store difference in frequency
-positive_word_frequency_difference = {}
-
-# Calculate frequency difference for common words
-for word in common_words:
-    difference = positive_word_frequency[word] - negative_word_frequency[word]
-    positive_word_frequency_difference[word] = difference
-
-# Sort positive_word_frequency_difference by value (difference) in descending order
-sorted_positive_word_frequency_difference = sorted(positive_word_frequency_difference.items(), key=lambda x: x[1], reverse=True)
-
-# # Print the difference in frequency for each word (sorted)
-# print("\nDifference in Frequency (Positive - Negative) - Sorted:")
-# for word, diff in sorted_word_frequency_difference:
-#     print(f"{word}: {diff}")
+# Pad sequences to ensure uniform length
+max_length = 45  # Maximum sequence length
+X_train_padded = pad_sequences(X_train_seq, maxlen=max_length, padding='post', truncating='post')
+X_test_padded = pad_sequences(X_test_seq, maxlen=max_length, padding='post', truncating='post')
 
 
-# Initialize dictionary to store difference in frequency
-negative_word_frequency_difference = {}
+def create_model():
+    model = Sequential([
+        Embedding(input_dim=10000, output_dim=16, input_length=max_length),
+        Flatten(),
+        Dense(128, activation='relu',kernel_regularizer=l1_l2(l1=h1_l1Loss, l2=h1_l2Loss)),
+        Dense(128, activation='relu',kernel_regularizer=l1_l2(l1=h2_l1Loss, l2=h2_l2Loss)),
+        Dense(128, activation='relu',kernel_regularizer=l1_l2(l1=h3_l1Loss, l2=h3_l2Loss)),
+        Dense(128, activation='relu',kernel_regularizer=l1_l2(l1=h4_l1Loss, l2=h4_l2Loss)),
+        Dense(128, activation='relu',kernel_regularizer=l1_l2(l1=h5_l1Loss, l2=h5_l2Loss)),
+        Dense(1, activation='sigmoid')
+    ])
 
-# Calculate frequency difference for common words
-for word in common_words:
-    difference = negative_word_frequency[word] - positive_word_frequency[word]
-    negative_word_frequency_difference[word] = difference
+    return model
 
-# Sort negative_word_frequency_difference by value (difference) in descending order
-sorted_negative_word_frequency_difference = sorted(negative_word_frequency_difference.items(), key=lambda x: x[1], reverse=True)
+number_of_experiments = 10000
 
-# Create new lists containing the top 5,000 words from each sorted difference list
-top_positive_words = [word for word, _ in sorted_positive_word_frequency_difference[:5000]]
-top_negative_words = [word for word, _ in sorted_negative_word_frequency_difference[:5000]]
+h1_l1Loss = 0
+h1_l2Loss = 0
+h2_l1Loss = 0
+h2_l2Loss = 0
+h3_l1Loss = 0
+h3_l2Loss = 0
+h4_l1Loss = 0
+h4_l2Loss = 0
+h5_l1Loss = 0
+h5_l2Loss = 0
 
-# Print the top 5,000 words from each sorted difference list
-print("\nTop 5,000 Words in Positive Sentences:")
-print(top_positive_words)
 
-print("\nTop 5,000 Words in Negative Sentences:")
-print(top_negative_words)
-
-# Combine the lists
-combined_words_list = top_positive_words + top_negative_words
-
-# Find the number of unique words
-unique_vocab = len(set(combined_words_list))
-
-# Initialize the Tokenizer with the combined unique words
-tokenizer = Tokenizer(num_words=unique_vocab + 1, oov_token="<OOV>")
-tokenizer.fit_on_texts(combined_words_list)
-
-# Convert the sentences to sequences
-sequences = tokenizer.texts_to_sequences(final_processed_sentences[0])
-padded_sequences = pad_sequences(sequences, maxlen=45, padding='post')
-
-# Convert sentiment labels to binary format
-labels = sentiments[0].apply(lambda x: 1 if x == "positive" else 0).values
-
-# Split data into training and test sets
-X_train, X_test, y_train, y_test = train_test_split(padded_sequences, labels, test_size=0.4, random_state=42)
-
-# Further split for validation set
-X_val, X_test, y_val, y_test = train_test_split(X_test, y_test, test_size=0.5, random_state=42)
-
-# Define the model
-model = Sequential([
-    Embedding(input_dim=unique_vocab + 1, output_dim=100, input_length=45),
-    Flatten(),
-    Dense(256, activation='relu', kernel_regularizer=l1_l2(l1=0.01, l2=0.01)),
-    Dropout(0.5),
-    Dense(128, activation='relu', kernel_regularizer=l1_l2(l1=0.01, l2=0.01)),
-    Dropout(0.5),
-    Dense(64, activation='relu', kernel_regularizer=l1_l2(l1=0.01, l2=0.01)),
-    Dropout(0.5),
-    Dense(32, activation='relu', kernel_regularizer=l1_l2(l1=0.01, l2=0.01)),
-    Dropout(0.5),
-    Dense(1, activation='sigmoid')
-])
-
+model = create_model()  # Assuming 'create_model()' uses the updated regularization strengths
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+model.fit(X_train_padded, y_train, epochs=10, batch_size=2048, validation_data=(X_test_padded, y_test))
+
+timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+model_path = f"model_{timestamp}.h5"
+model.save(model_path)
+print(f"Model saved as {model_path} because it met the criteria.")
+
+# Save the regularization weights to a text or JSON file
+regularization_weights = {
+    'h1_l1Loss': h1_l1Loss,
+    'h1_l2Loss': h1_l2Loss,
+    'h2_l1Loss': h2_l1Loss,
+    'h2_l2Loss': h2_l2Loss,
+    'h3_l1Loss': h3_l1Loss,
+    'h3_l2Loss': h3_l2Loss,
+    'h4_l1Loss': h4_l1Loss,
+    'h4_l2Loss': h4_l2Loss,
+    'h5_l1Loss': h5_l1Loss,
+    'h5_l2Loss': h5_l2Loss
+}
+regularization_path = f"regularization_weights_{timestamp}.json"
+with open(regularization_path, 'w') as f:
+    json.dump(regularization_weights, f)
+print(f"Regularization weights saved as {regularization_path}.")
 
 
-# Training the model
-epochs = 10  # Number of epochs to train for
-batch_size = 32  # Batch size for training
+for i in range(number_of_experiments):  # Define 'number_of_experiments' as per your requirement
 
-# Fit the model on the training data
-history = model.fit(X_train, y_train,
-                    epochs=epochs,
-                    batch_size=batch_size,
-                    validation_data=(X_val, y_val),
-                    verbose=2)
+    print("On experiment:"+str(i)+"/"+str(number_of_experiments))
+    # Randomize L1 and L2 regularization strengths
+    h1_l1Loss = np.random.uniform(0, 0.00001)
+    h1_l2Loss = np.random.uniform(0, 0.00001)
+    h2_l1Loss = np.random.uniform(0, 0.00001)
+    h2_l2Loss = np.random.uniform(0, 0.00001)
+    h3_l1Loss = np.random.uniform(0, 0.00001)
+    h3_l2Loss = np.random.uniform(0, 0.00001)
+    h4_l1Loss = np.random.uniform(0, 0.00001)
+    h4_l2Loss = np.random.uniform(0, 0.00001)
+    h5_l1Loss = np.random.uniform(0, 0.00001)
+    h5_l2Loss = np.random.uniform(0, 0.00001)
+    
+    # Create and compile the model with updated regularization strengths
+    model = create_model()  # Assuming 'create_model()' uses the updated regularization strengths
+    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+    
+    # Train the model
+    history = model.fit(X_train_padded, y_train, epochs=10, batch_size=2048, validation_data=(X_test_padded, y_test),verbose=0)
+    
+    # Evaluate the model on test data
+    loss, accuracy = model.evaluate(X_test_padded, y_test,verbose=0)
+    
+    # Extract the last training accuracy
+    training_accuracy = history.history['accuracy'][-1] * 100  # Convert to percentage
+    
+    # Check conditions (assuming the conditions mentioned before)
+    test_accuracy_threshold = 78.6
+    difference_threshold = 10.0
+    actual_difference = abs(training_accuracy - accuracy * 100)
+    
+    if accuracy * 100 > test_accuracy_threshold and actual_difference < difference_threshold:
+        # Save the model with a timestamp
+        timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+        model_path = f"model_{timestamp}.h5"
+        model.save(model_path)
+        print(f"Model saved as {model_path} because it met the criteria.")
 
-# Evaluating the model on the test set
-test_loss, test_acc = model.evaluate(X_test, y_test, verbose=2)
-print(f"Test Accuracy: {test_acc}")
+        # Save the regularization weights to a text or JSON file
+        regularization_weights = {
+            'training_accuracy':training_accuracy,
+            'test_accuracy':accuracy,
+            'h1_l1Loss': h1_l1Loss,
+            'h1_l2Loss': h1_l2Loss,
+            'h2_l1Loss': h2_l1Loss,
+            'h2_l2Loss': h2_l2Loss,
+            'h3_l1Loss': h3_l1Loss,
+            'h3_l2Loss': h3_l2Loss,
+            'h4_l1Loss': h4_l1Loss,
+            'h4_l2Loss': h4_l2Loss,
+            'h5_l1Loss': h5_l1Loss,
+            'h5_l2Loss': h5_l2Loss
+        }
+        regularization_path = f"regularization_weights_{timestamp}.json"
+        with open(regularization_path, 'w') as f:
+            json.dump(regularization_weights, f)
+        print(f"Regularization weights saved as {regularization_path}.")
