@@ -48,11 +48,11 @@ def create_model(outputDimChosen, l1_depth, l2_depth, l3_depth, l4_depth, l5_dep
     model = Sequential([
         Embedding(input_dim=10000, output_dim=outputDimChosen, input_length=45),
         Flatten(),
-        Dense(l1_depth),
-        Dense(l2_depth),
-        Dense(l3_depth),
-        Dense(l4_depth),
-        Dense(l5_depth),
+        Dense(l1_depth,activation='relu'),
+        Dense(l2_depth,activation='relu'),
+        Dense(l3_depth,activation='relu'),
+        Dense(l4_depth,activation='relu'),
+        Dense(l5_depth,activation='relu'),
         Dense(1, activation='sigmoid')
     ])
 
@@ -97,7 +97,7 @@ configurations = [
 ]
 
 # Set the starting iteration
-start_iteration = 3807
+start_iteration = 0
 
 # Iterate through configurations starting from the specified iteration
 for config in configurations:  # Adjust for zero-based indexing
@@ -120,8 +120,7 @@ with open(results_path, 'w') as file:
 
 print(f"We have initialized all iterations into json memory {results_path}.")
 
-
-
+print("Tensorflow Version:"+str(tf.__version__))
 
 if os.path.exists("run.json"):
     with open("run.json", 'r') as file:
