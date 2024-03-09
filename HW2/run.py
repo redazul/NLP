@@ -73,7 +73,7 @@ def train_and_evaluate_model(params):
     outputDimChosen, l1_depth, l2_depth, l3_depth, l4_depth, l5_depth = params
     model = create_model(outputDimChosen, l1_depth, l2_depth, l3_depth, l4_depth, l5_depth)
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-    history = model.fit(X_train_padded, y_train, epochs=10, batch_size=2048, validation_data=(X_test_padded, y_test), verbose=0)
+    history = model.fit(X_train_padded, y_train, epochs=10, batch_size=2048, validation_data=(X_test_padded, y_test), verbose=0,shuffle=True)
     loss, accuracy = model.evaluate(X_test_padded, y_test, verbose=0)
     return accuracy * 100  # Return test accuracy
 
