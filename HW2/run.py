@@ -68,15 +68,6 @@ else:
     print("TensorFlow was NOT built with CUDA support")
 
 
-
-def train_and_evaluate_model(params):
-    outputDimChosen, l1_depth, l2_depth, l3_depth, l4_depth, l5_depth = params
-    model = create_model(outputDimChosen, l1_depth, l2_depth, l3_depth, l4_depth, l5_depth)
-    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-    history = model.fit(X_train_padded, y_train, epochs=10, batch_size=2048, validation_data=(X_test_padded, y_test), verbose=0)
-    loss, accuracy = model.evaluate(X_test_padded, y_test, verbose=0)
-    return accuracy * 100  # Return test accuracy
-
 layerDepth = [16, 32, 64, 128, 256]
 output_dim = [16, 32, 64]
 
@@ -102,11 +93,11 @@ for outputDimChosen in output_dim:
                         print(f"Iteration: {current_iteration}/{total_iterations} - Iterations left: {iterations_left}")
 
                         # Create and compile the model with updated regularization strengths
-                        model = create_model(outputDimChosen, l1_depth, l2_depth, l3_depth, l4_depth, l5_depth)  # Assuming 'create_model()' uses the updated regularization strengths
+                        model = create_model(outputDimChosen, l1_depth, l2_depth, l3_depth, l4_depth, l5_depth)
                         model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
                         # Train the model
-                        history = model.fit(X_train_padded, y_train, epochs=10, batch_size=2048, validation_data=(X_test_padded, y_test),verbose=0)
+                        history = model.fit(X_train_padded, y_train, epochs=5, batch_size=2048, validation_data=(X_test_padded, y_test),verbose=0,shuffle=True)
 
                         # Evaluate the model on test data
                         loss, accuracy = model.evaluate(X_test_padded, y_test,verbose=0)
