@@ -36,20 +36,19 @@ X_train_seq = tokenizer.texts_to_sequences(X_train)
 X_test_seq = tokenizer.texts_to_sequences(X_test)
 
 # Pad sequences to ensure uniform length
-max_length = 45  # Maximum sequence length
-X_train_padded = pad_sequences(X_train_seq, maxlen=max_length, padding='post', truncating='post')
-X_test_padded = pad_sequences(X_test_seq, maxlen=max_length, padding='post', truncating='post')
+X_train_padded = pad_sequences(X_train_seq, maxlen=45, padding='post', truncating='post')
+X_test_padded = pad_sequences(X_test_seq, maxlen=45, padding='post', truncating='post')
 
 
-def create_model():
+def create_model(outputDimChosen, l1_depth, l2_depth, l3_depth, l4_depth, l5_depth):
     model = Sequential([
-        Embedding(input_dim=10000, output_dim=np.random.choice(output_dim), input_length=max_length),
+        Embedding(input_dim=10000, output_dim=outputDimChosen, input_length=45),
         Flatten(),
-        Dense(np.random.choice(layerDepth), activation='relu',kernel_regularizer=l1_l2(l1=h1_l1Loss, l2=h1_l2Loss)),
-        Dense(np.random.choice(layerDepth), activation='relu',kernel_regularizer=l1_l2(l1=h2_l1Loss, l2=h2_l2Loss)),
-        Dense(np.random.choice(layerDepth), activation='relu',kernel_regularizer=l1_l2(l1=h3_l1Loss, l2=h3_l2Loss)),
-        Dense(np.random.choice(layerDepth), activation='relu',kernel_regularizer=l1_l2(l1=h4_l1Loss, l2=h4_l2Loss)),
-        Dense(np.random.choice(layerDepth), activation='relu',kernel_regularizer=l1_l2(l1=h5_l1Loss, l2=h5_l2Loss)),
+        Dense(l1_depth),
+        Dense(l2_depth),
+        Dense(l3_depth),
+        Dense(l4_depth),
+        Dense(l5_depth),
         Dense(1, activation='sigmoid')
     ])
 
@@ -68,72 +67,80 @@ if tf.test.is_built_with_cuda():
 else:
     print("TensorFlow was NOT built with CUDA support")
 
-number_of_experiments = 30000
 
 
-
-for i in range(number_of_experiments):  # Define 'number_of_experiments' as per your requirement
-
-    print("On experiment:"+str(i)+"/"+str(number_of_experiments))
-    # Randomize L1 and L2 regularization strengths
-    h1_l1Loss = np.random.uniform(0, 0.0001)
-    h1_l2Loss = np.random.uniform(0, 0.0001)
-    h2_l1Loss = np.random.uniform(0, 0.0001)
-    h2_l2Loss = np.random.uniform(0, 0.0001)
-    h3_l1Loss = np.random.uniform(0, 0.0001)
-    h3_l2Loss = np.random.uniform(0, 0.0001)
-    h4_l1Loss = np.random.uniform(0, 0.0001)
-    h4_l2Loss = np.random.uniform(0, 0.0001)
-    h5_l1Loss = np.random.uniform(0, 0.0001)
-    h5_l2Loss = np.random.uniform(0, 0.0001)
-
-    layerDepth=[64, 128, 256]
-    output_dim=[16, 32, 64]
-
-    # Create and compile the model with updated regularization strengths
-    model = create_model()  # Assuming 'create_model()' uses the updated regularization strengths
+def train_and_evaluate_model(params):
+    outputDimChosen, l1_depth, l2_depth, l3_depth, l4_depth, l5_depth = params
+    model = create_model(outputDimChosen, l1_depth, l2_depth, l3_depth, l4_depth, l5_depth)
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-    
-    # Train the model
-    history = model.fit(X_train_padded, y_train, epochs=10, batch_size=2048, validation_data=(X_test_padded, y_test),verbose=0)
-    
-    # Evaluate the model on test data
-    loss, accuracy = model.evaluate(X_test_padded, y_test,verbose=0)
-    
-    # Extract the last training accuracy
-    training_accuracy = history.history['accuracy'][-1] * 100  # Convert to percentage
-    
-    # Check conditions (assuming the conditions mentioned before)
-    test_accuracy_threshold = 78.6
-    difference_threshold = 10.0
-    actual_difference = abs(training_accuracy - accuracy * 100)
+    history = model.fit(X_train_padded, y_train, epochs=10, batch_size=2048, validation_data=(X_test_padded, y_test), verbose=0)
+    loss, accuracy = model.evaluate(X_test_padded, y_test, verbose=0)
+    return accuracy * 100  # Return test accuracy
 
-    print("Training_accuracy:"+str(training_accuracy))
-    print("Testaccuracy:"+str(accuracy*100))
+layerDepth = [16, 32, 64, 128, 256]
+output_dim = [16, 32, 64]
 
-    if accuracy * 100 > test_accuracy_threshold and actual_difference < difference_threshold:
-        # Save the model with a timestamp
-        timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-        model_path = f"model_{timestamp}.h5"
-        model.save(model_path)
-        print(f"Model saved as {model_path} because it met the criteria.")
+# Calculate total iterations
+total_iterations = len(output_dim) * len(layerDepth)**5  # 5 nested loops of layerDepth
+current_iteration = 0
 
-        # Save the regularization weights to a text or JSON file
-        regularization_weights = {
-            'training_accuracy':training_accuracy,
-            'test_accuracy':accuracy,
-            'h1_l1Loss': h1_l1Loss,
-            'h1_l2Loss': h1_l2Loss,
-            'h2_l1Loss': h2_l1Loss,
-            'h2_l2Loss': h2_l2Loss,
-            'h3_l1Loss': h3_l1Loss,
-            'h3_l2Loss': h3_l2Loss,
-            'h4_l1Loss': h4_l1Loss,
-            'h4_l2Loss': h4_l2Loss,
-            'h5_l1Loss': h5_l1Loss,
-            'h5_l2Loss': h5_l2Loss
-        }
-        regularization_path = f"regularization_weights_{timestamp}.json"
-        with open(regularization_path, 'w') as f:
-            json.dump(regularization_weights, f)
-        print(f"Regularization weights saved as {regularization_path}.")
+# Iterate through every possible combination of output dimension and layer depths
+for outputDimChosen in output_dim:
+    for l1_depth in layerDepth:
+        for l2_depth in layerDepth:
+            for l3_depth in layerDepth:
+                for l4_depth in layerDepth:
+                    for l5_depth in layerDepth:
+                        # Increment the current iteration
+                        current_iteration += 1
+
+                        # Calculate iterations left
+                        iterations_left = total_iterations - current_iteration
+
+                        # Print the current configuration and the progress
+                        print(f"Config: {outputDimChosen}, {l1_depth}, {l2_depth}, {l3_depth}, {l4_depth}, {l5_depth}")
+                        print(f"Iteration: {current_iteration}/{total_iterations} - Iterations left: {iterations_left}")
+
+                        # Create and compile the model with updated regularization strengths
+                        model = create_model(outputDimChosen, l1_depth, l2_depth, l3_depth, l4_depth, l5_depth)  # Assuming 'create_model()' uses the updated regularization strengths
+                        model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+                        # Train the model
+                        history = model.fit(X_train_padded, y_train, epochs=10, batch_size=2048, validation_data=(X_test_padded, y_test),verbose=0)
+
+                        # Evaluate the model on test data
+                        loss, accuracy = model.evaluate(X_test_padded, y_test,verbose=0)
+
+                        # Extract the last training accuracy
+                        training_accuracy = history.history['accuracy'][-1] * 100  # Convert to percentage
+
+                        # Check conditions (assuming the conditions mentioned before)
+                        test_accuracy_threshold = 78.6
+                        difference_threshold = 10.0
+                        actual_difference = abs(training_accuracy - accuracy * 100)
+
+                        print("Training_accuracy:"+str(training_accuracy))
+                        print("Testaccuracy:"+str(accuracy*100))
+
+                        if accuracy * 100 > test_accuracy_threshold and actual_difference < difference_threshold:
+                            # Save the model with a timestamp
+                            timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+                            model_path = f"model_{timestamp}.h5"
+                            model.save(model_path)
+                            print(f"Model saved as {model_path} because it met the criteria.")
+
+                            # Save the regularization weights to a text or JSON file
+                            regularization_weights = {
+                                'training_accuracy':training_accuracy,
+                                'test_accuracy':accuracy,
+                                'outputDimChosen':outputDimChosen, 
+                                'l1_depth':l1_depth, 
+                                'l2_depth':l2_depth, 
+                                'l3_depth':l3_depth, 
+                                'l4_depth':l4_depth, 
+                                'l5_depth':l5_depth
+                            }
+                            regularization_path = f"regularization_weights_{timestamp}.json"
+                            with open(regularization_path, 'w') as f:
+                                json.dump(regularization_weights, f)
+                            print(f"Regularization weights saved as {regularization_path}.")
