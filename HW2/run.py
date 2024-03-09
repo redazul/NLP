@@ -13,6 +13,7 @@ import datetime
 import json
 import itertools
 import os
+import time
 
 
 
@@ -96,7 +97,7 @@ configurations = [
 ]
 
 # Set the starting iteration
-start_iteration = 2486
+start_iteration = 2587
 
 # Iterate through configurations starting from the specified iteration
 for config in configurations:  # Adjust for zero-based indexing
@@ -137,8 +138,15 @@ else:
     print("run.json not found. Starting from scratch.")
 
 
+start_time = time.time()  # Record the start time of the process
+times = []  # List to store the time taken for each iteration
+
+
 for config in configurations[start_iteration - 1:]:  # Adjust for zero-based indexing
     # Unpack the configuration directly, since it's already a tuple of integers
+    iteration_start_time = time.time()  # Start time of the current iteration
+
+    
     outputDimChosen, l1_depth, l2_depth, l3_depth, l4_depth, l5_depth = config["config"]
     
     # Create and compile the model
@@ -158,9 +166,23 @@ for config in configurations[start_iteration - 1:]:  # Adjust for zero-based ind
     # Open run.json file to append the result after each model evaluation
     with open("run.json", "w") as file:
         json.dump(configurations, file, indent=4)  # Use indent for better readability
-    
+
+    iteration_time = time.time() - iteration_start_time
+    times.append(iteration_time)
+
+    # Calculate the average time per iteration so far
+    avg_time_per_iteration = sum(times) / len(times)
+
+    # Calculate the estimated time remaining
+    iterations_left = len(configurations) - (config['iteration'] - start_iteration + 1)
+    estimated_time_remaining = avg_time_per_iteration * iterations_left
+
+    # Convert estimated time remaining to a readable format (e.g., minutes and seconds)
+    est_minutes, est_seconds = divmod(estimated_time_remaining, 60)
+
     # Print current progress
     print(f"Processed {config['iteration']} / {len(configurations)} - Config: {config['config']} - Training Acc: {config['trainingAccuracy']}, Test Acc: {config['testAccuracy']}")
+    print(f"Estimated time remaining: {int(est_minutes)}m {int(est_seconds)}s")
 
     # Check if training accuracy is above 70% and the absolute difference between training and testing is below 6%
     if training_accuracy > 70 and abs(training_accuracy - test_accuracy) < 6:

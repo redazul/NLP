@@ -32314,8 +32314,8 @@
             16
         ],
         "iteration": 2486,
-        "trainingAccuracy": 95.69000005722046,
-        "testAccuracy": 78.43999862670898
+        "trainingAccuracy": 96.322500705719,
+        "testAccuracy": 77.77000069618225
     },
     {
         "config": [
@@ -32327,8 +32327,8 @@
             32
         ],
         "iteration": 2487,
-        "trainingAccuracy": 96.70500159263611,
-        "testAccuracy": 77.24000215530396
+        "trainingAccuracy": 96.03750109672546,
+        "testAccuracy": 78.22999954223633
     },
     {
         "config": [
@@ -32340,8 +32340,8 @@
             64
         ],
         "iteration": 2488,
-        "trainingAccuracy": 96.42999768257141,
-        "testAccuracy": 77.67999768257141
+        "trainingAccuracy": 96.5149998664856,
+        "testAccuracy": 78.11999917030334
     },
     {
         "config": [
@@ -32353,8 +32353,8 @@
             128
         ],
         "iteration": 2489,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.40250205993652,
+        "testAccuracy": 78.03000211715698
     },
     {
         "config": [
@@ -32366,8 +32366,8 @@
             256
         ],
         "iteration": 2490,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.72499990463257,
+        "testAccuracy": 78.17000150680542
     },
     {
         "config": [
@@ -32379,8 +32379,8 @@
             16
         ],
         "iteration": 2491,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.87749743461609,
+        "testAccuracy": 77.68999934196472
     },
     {
         "config": [
@@ -32392,8 +32392,8 @@
             32
         ],
         "iteration": 2492,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.74999809265137,
+        "testAccuracy": 77.9699981212616
     },
     {
         "config": [
@@ -32405,8 +32405,8 @@
             64
         ],
         "iteration": 2493,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.11499905586243,
+        "testAccuracy": 77.95000076293945
     },
     {
         "config": [
@@ -32418,8 +32418,8 @@
             128
         ],
         "iteration": 2494,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.12500071525574,
+        "testAccuracy": 78.25999855995178
     },
     {
         "config": [
@@ -32431,8 +32431,8 @@
             256
         ],
         "iteration": 2495,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.11999988555908,
+        "testAccuracy": 77.50999927520752
     },
     {
         "config": [
@@ -32444,8 +32444,8 @@
             16
         ],
         "iteration": 2496,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.83250284194946,
+        "testAccuracy": 78.57999801635742
     },
     {
         "config": [
@@ -32457,8 +32457,8 @@
             32
         ],
         "iteration": 2497,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.24500274658203,
+        "testAccuracy": 77.89999842643738
     },
     {
         "config": [
@@ -32470,8 +32470,8 @@
             64
         ],
         "iteration": 2498,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.08250260353088,
+        "testAccuracy": 78.21000218391418
     },
     {
         "config": [
@@ -32483,8 +32483,8 @@
             128
         ],
         "iteration": 2499,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.07750177383423,
+        "testAccuracy": 78.22999954223633
     },
     {
         "config": [
@@ -32496,8 +32496,8 @@
             256
         ],
         "iteration": 2500,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.37249708175659,
+        "testAccuracy": 77.5600016117096
     },
     {
         "config": [
@@ -32509,8 +32509,8 @@
             16
         ],
         "iteration": 2501,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.26500010490417,
+        "testAccuracy": 79.2900025844574
     },
     {
         "config": [
@@ -32522,8 +32522,8 @@
             32
         ],
         "iteration": 2502,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.4925000667572,
+        "testAccuracy": 79.43000197410583
     },
     {
         "config": [
@@ -32535,8 +32535,8 @@
             64
         ],
         "iteration": 2503,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.88500261306763,
+        "testAccuracy": 78.72999906539917
     },
     {
         "config": [
@@ -32548,8 +32548,8 @@
             128
         ],
         "iteration": 2504,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.22499942779541,
+        "testAccuracy": 79.07000184059143
     },
     {
         "config": [
@@ -32561,8 +32561,8 @@
             256
         ],
         "iteration": 2505,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.8299994468689,
+        "testAccuracy": 78.86000275611877
     },
     {
         "config": [
@@ -32574,8 +32574,8 @@
             16
         ],
         "iteration": 2506,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.39750123023987,
+        "testAccuracy": 78.24000120162964
     },
     {
         "config": [
@@ -32587,8 +32587,8 @@
             32
         ],
         "iteration": 2507,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.89999914169312,
+        "testAccuracy": 79.3500006198883
     },
     {
         "config": [
@@ -32600,8 +32600,8 @@
             64
         ],
         "iteration": 2508,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.11999988555908,
+        "testAccuracy": 78.72999906539917
     },
     {
         "config": [
@@ -32613,8 +32613,8 @@
             128
         ],
         "iteration": 2509,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.29250264167786,
+        "testAccuracy": 79.18000221252441
     },
     {
         "config": [
@@ -32626,8 +32626,8 @@
             256
         ],
         "iteration": 2510,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.00499868392944,
+        "testAccuracy": 79.37999963760376
     },
     {
         "config": [
@@ -32639,8 +32639,8 @@
             16
         ],
         "iteration": 2511,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.19000053405762,
+        "testAccuracy": 79.18999791145325
     },
     {
         "config": [
@@ -32652,8 +32652,8 @@
             32
         ],
         "iteration": 2512,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.13249897956848,
+        "testAccuracy": 79.18999791145325
     },
     {
         "config": [
@@ -32665,8 +32665,8 @@
             64
         ],
         "iteration": 2513,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.49749994277954,
+        "testAccuracy": 78.8100004196167
     },
     {
         "config": [
@@ -32678,8 +32678,8 @@
             128
         ],
         "iteration": 2514,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.25750184059143,
+        "testAccuracy": 79.50999736785889
     },
     {
         "config": [
@@ -32691,8 +32691,8 @@
             256
         ],
         "iteration": 2515,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.18499875068665,
+        "testAccuracy": 78.97999882698059
     },
     {
         "config": [
@@ -32704,8 +32704,8 @@
             16
         ],
         "iteration": 2516,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.06750011444092,
+        "testAccuracy": 78.2800018787384
     },
     {
         "config": [
@@ -32717,8 +32717,8 @@
             32
         ],
         "iteration": 2517,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.42000198364258,
+        "testAccuracy": 78.6300003528595
     },
     {
         "config": [
@@ -32730,8 +32730,8 @@
             64
         ],
         "iteration": 2518,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.3450014591217,
+        "testAccuracy": 78.89000177383423
     },
     {
         "config": [
@@ -32743,8 +32743,8 @@
             128
         ],
         "iteration": 2519,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.3100016117096,
+        "testAccuracy": 78.930002450943
     },
     {
         "config": [
@@ -32756,8 +32756,8 @@
             256
         ],
         "iteration": 2520,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.35000228881836,
+        "testAccuracy": 78.28999757766724
     },
     {
         "config": [
@@ -32769,8 +32769,8 @@
             16
         ],
         "iteration": 2521,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.88000178337097,
+        "testAccuracy": 78.67000102996826
     },
     {
         "config": [
@@ -32782,8 +32782,8 @@
             32
         ],
         "iteration": 2522,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.0349977016449,
+        "testAccuracy": 79.1100025177002
     },
     {
         "config": [
@@ -32795,8 +32795,8 @@
             64
         ],
         "iteration": 2523,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 97.37750291824341,
+        "testAccuracy": 78.33999991416931
     },
     {
         "config": [
@@ -32808,8 +32808,8 @@
             128
         ],
         "iteration": 2524,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.00750207901001,
+        "testAccuracy": 78.89000177383423
     },
     {
         "config": [
@@ -32821,8 +32821,8 @@
             256
         ],
         "iteration": 2525,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.00750207901001,
+        "testAccuracy": 78.07999849319458
     },
     {
         "config": [
@@ -32834,8 +32834,8 @@
             16
         ],
         "iteration": 2526,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.59000134468079,
+        "testAccuracy": 79.5199990272522
     },
     {
         "config": [
@@ -32847,8 +32847,8 @@
             32
         ],
         "iteration": 2527,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.61250114440918,
+        "testAccuracy": 78.17999720573425
     },
     {
         "config": [
@@ -32860,8 +32860,8 @@
             64
         ],
         "iteration": 2528,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.75250148773193,
+        "testAccuracy": 78.35000157356262
     },
     {
         "config": [
@@ -32873,8 +32873,8 @@
             128
         ],
         "iteration": 2529,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.20749950408936,
+        "testAccuracy": 78.5099983215332
     },
     {
         "config": [
@@ -32886,8 +32886,8 @@
             256
         ],
         "iteration": 2530,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.35249972343445,
+        "testAccuracy": 78.20000052452087
     },
     {
         "config": [
@@ -32899,8 +32899,8 @@
             16
         ],
         "iteration": 2531,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.38500213623047,
+        "testAccuracy": 78.71000170707703
     },
     {
         "config": [
@@ -32912,8 +32912,8 @@
             32
         ],
         "iteration": 2532,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.29499912261963,
+        "testAccuracy": 78.72999906539917
     },
     {
         "config": [
@@ -32925,8 +32925,8 @@
             64
         ],
         "iteration": 2533,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.28000259399414,
+        "testAccuracy": 79.11999821662903
     },
     {
         "config": [
@@ -32938,8 +32938,8 @@
             128
         ],
         "iteration": 2534,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.62500023841858,
+        "testAccuracy": 78.39000225067139
     },
     {
         "config": [
@@ -32951,8 +32951,8 @@
             256
         ],
         "iteration": 2535,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.23249769210815,
+        "testAccuracy": 78.4500002861023
     },
     {
         "config": [
@@ -32964,8 +32964,8 @@
             16
         ],
         "iteration": 2536,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.64250016212463,
+        "testAccuracy": 79.03000116348267
     },
     {
         "config": [
@@ -32977,8 +32977,8 @@
             32
         ],
         "iteration": 2537,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.38000130653381,
+        "testAccuracy": 78.93999814987183
     },
     {
         "config": [
@@ -32990,8 +32990,8 @@
             64
         ],
         "iteration": 2538,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.28999829292297,
+        "testAccuracy": 79.00999784469604
     },
     {
         "config": [
@@ -33003,8 +33003,8 @@
             128
         ],
         "iteration": 2539,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.3949978351593,
+        "testAccuracy": 78.75999808311462
     },
     {
         "config": [
@@ -33016,8 +33016,8 @@
             256
         ],
         "iteration": 2540,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.00750207901001,
+        "testAccuracy": 78.82999777793884
     },
     {
         "config": [
@@ -33029,8 +33029,8 @@
             16
         ],
         "iteration": 2541,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.18499875068665,
+        "testAccuracy": 78.76999974250793
     },
     {
         "config": [
@@ -33042,8 +33042,8 @@
             32
         ],
         "iteration": 2542,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.43250107765198,
+        "testAccuracy": 78.83999943733215
     },
     {
         "config": [
@@ -33055,8 +33055,8 @@
             64
         ],
         "iteration": 2543,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.75999879837036,
+        "testAccuracy": 78.43999862670898
     },
     {
         "config": [
@@ -33068,8 +33068,8 @@
             128
         ],
         "iteration": 2544,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.74749970436096,
+        "testAccuracy": 78.56000065803528
     },
     {
         "config": [
@@ -33081,8 +33081,8 @@
             256
         ],
         "iteration": 2545,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.05749845504761,
+        "testAccuracy": 78.58999967575073
     },
     {
         "config": [
@@ -33094,8 +33094,8 @@
             16
         ],
         "iteration": 2546,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.07250094413757,
+        "testAccuracy": 78.51999998092651
     },
     {
         "config": [
@@ -33107,8 +33107,8 @@
             32
         ],
         "iteration": 2547,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.82999849319458,
+        "testAccuracy": 77.93999910354614
     },
     {
         "config": [
@@ -33120,8 +33120,8 @@
             64
         ],
         "iteration": 2548,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.11250162124634,
+        "testAccuracy": 78.6899983882904
     },
     {
         "config": [
@@ -33133,8 +33133,8 @@
             128
         ],
         "iteration": 2549,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.66749835014343,
+        "testAccuracy": 78.35000157356262
     },
     {
         "config": [
@@ -33146,8 +33146,8 @@
             256
         ],
         "iteration": 2550,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.68999910354614,
+        "testAccuracy": 77.53000259399414
     },
     {
         "config": [
@@ -33159,8 +33159,8 @@
             16
         ],
         "iteration": 2551,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.89499831199646,
+        "testAccuracy": 78.71000170707703
     },
     {
         "config": [
@@ -33172,8 +33172,8 @@
             32
         ],
         "iteration": 2552,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.73000073432922,
+        "testAccuracy": 78.64999771118164
     },
     {
         "config": [
@@ -33185,8 +33185,8 @@
             64
         ],
         "iteration": 2553,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.91749906539917,
+        "testAccuracy": 78.79999876022339
     },
     {
         "config": [
@@ -33198,8 +33198,8 @@
             128
         ],
         "iteration": 2554,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.8175003528595,
+        "testAccuracy": 79.28000092506409
     },
     {
         "config": [
@@ -33211,8 +33211,8 @@
             256
         ],
         "iteration": 2555,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.00750207901001,
+        "testAccuracy": 78.71000170707703
     },
     {
         "config": [
@@ -33224,8 +33224,8 @@
             16
         ],
         "iteration": 2556,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.30500078201294,
+        "testAccuracy": 79.12999987602234
     },
     {
         "config": [
@@ -33237,8 +33237,8 @@
             32
         ],
         "iteration": 2557,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.39999866485596,
+        "testAccuracy": 78.85000109672546
     },
     {
         "config": [
@@ -33250,8 +33250,8 @@
             64
         ],
         "iteration": 2558,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.45500183105469,
+        "testAccuracy": 78.4500002861023
     },
     {
         "config": [
@@ -33263,8 +33263,8 @@
             128
         ],
         "iteration": 2559,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.60250043869019,
+        "testAccuracy": 78.78999710083008
     },
     {
         "config": [
@@ -33276,8 +33276,8 @@
             256
         ],
         "iteration": 2560,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.9825029373169,
+        "testAccuracy": 78.56000065803528
     },
     {
         "config": [
@@ -33289,8 +33289,8 @@
             16
         ],
         "iteration": 2561,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.93999981880188,
+        "testAccuracy": 79.10000085830688
     },
     {
         "config": [
@@ -33302,8 +33302,8 @@
             32
         ],
         "iteration": 2562,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.07750177383423,
+        "testAccuracy": 78.21999788284302
     },
     {
         "config": [
@@ -33315,8 +33315,8 @@
             64
         ],
         "iteration": 2563,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.8625009059906,
+        "testAccuracy": 78.57000231742859
     },
     {
         "config": [
@@ -33328,8 +33328,8 @@
             128
         ],
         "iteration": 2564,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.60249948501587,
+        "testAccuracy": 78.71999740600586
     },
     {
         "config": [
@@ -33341,8 +33341,8 @@
             256
         ],
         "iteration": 2565,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.59249782562256,
+        "testAccuracy": 77.67999768257141
     },
     {
         "config": [
@@ -33354,8 +33354,8 @@
             16
         ],
         "iteration": 2566,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 97.36499786376953,
+        "testAccuracy": 78.35999727249146
     },
     {
         "config": [
@@ -33367,8 +33367,8 @@
             32
         ],
         "iteration": 2567,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 97.10999727249146,
+        "testAccuracy": 78.28999757766724
     },
     {
         "config": [
@@ -33380,8 +33380,8 @@
             64
         ],
         "iteration": 2568,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.5049991607666,
+        "testAccuracy": 78.86000275611877
     },
     {
         "config": [
@@ -33393,8 +33393,8 @@
             128
         ],
         "iteration": 2569,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.05500102043152,
+        "testAccuracy": 78.28999757766724
     },
     {
         "config": [
@@ -33406,8 +33406,8 @@
             256
         ],
         "iteration": 2570,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.47749757766724,
+        "testAccuracy": 78.40999960899353
     },
     {
         "config": [
@@ -33419,8 +33419,8 @@
             16
         ],
         "iteration": 2571,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.94499969482422,
+        "testAccuracy": 78.03999781608582
     },
     {
         "config": [
@@ -33432,8 +33432,8 @@
             32
         ],
         "iteration": 2572,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.19749784469604,
+        "testAccuracy": 79.06000018119812
     },
     {
         "config": [
@@ -33445,8 +33445,8 @@
             64
         ],
         "iteration": 2573,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.9124972820282,
+        "testAccuracy": 78.39000225067139
     },
     {
         "config": [
@@ -33458,8 +33458,8 @@
             128
         ],
         "iteration": 2574,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.01250290870667,
+        "testAccuracy": 77.68999934196472
     },
     {
         "config": [
@@ -33471,8 +33471,8 @@
             256
         ],
         "iteration": 2575,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.28250002861023,
+        "testAccuracy": 78.2800018787384
     },
     {
         "config": [
@@ -33484,8 +33484,8 @@
             16
         ],
         "iteration": 2576,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.20000123977661,
+        "testAccuracy": 78.33999991416931
     },
     {
         "config": [
@@ -33497,8 +33497,8 @@
             32
         ],
         "iteration": 2577,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.96499800682068,
+        "testAccuracy": 78.72999906539917
     },
     {
         "config": [
@@ -33510,8 +33510,8 @@
             64
         ],
         "iteration": 2578,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.89999914169312,
+        "testAccuracy": 78.39999794960022
     },
     {
         "config": [
@@ -33523,8 +33523,8 @@
             128
         ],
         "iteration": 2579,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.0349977016449,
+        "testAccuracy": 79.00000214576721
     },
     {
         "config": [
@@ -33536,8 +33536,8 @@
             256
         ],
         "iteration": 2580,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.79250121116638,
+        "testAccuracy": 78.68000268936157
     },
     {
         "config": [
@@ -33549,8 +33549,8 @@
             16
         ],
         "iteration": 2581,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.24999761581421,
+        "testAccuracy": 79.1700005531311
     },
     {
         "config": [
@@ -33562,8 +33562,8 @@
             32
         ],
         "iteration": 2582,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.59000039100647,
+        "testAccuracy": 78.89000177383423
     },
     {
         "config": [
@@ -33575,8 +33575,8 @@
             64
         ],
         "iteration": 2583,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.68999910354614,
+        "testAccuracy": 77.93999910354614
     },
     {
         "config": [
@@ -33588,8 +33588,8 @@
             128
         ],
         "iteration": 2584,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.26500010490417,
+        "testAccuracy": 77.7899980545044
     },
     {
         "config": [
@@ -33601,8 +33601,8 @@
             256
         ],
         "iteration": 2585,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.46000266075134,
+        "testAccuracy": 78.53000164031982
     },
     {
         "config": [
@@ -33614,8 +33614,8 @@
             16
         ],
         "iteration": 2586,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.42249941825867,
+        "testAccuracy": 78.78999710083008
     },
     {
         "config": [
@@ -33627,8 +33627,8 @@
             32
         ],
         "iteration": 2587,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.91500163078308,
+        "testAccuracy": 78.71999740600586
     },
     {
         "config": [
@@ -33640,8 +33640,8 @@
             64
         ],
         "iteration": 2588,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.7074990272522,
+        "testAccuracy": 77.81999707221985
     },
     {
         "config": [
@@ -33653,8 +33653,8 @@
             128
         ],
         "iteration": 2589,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.5749979019165,
+        "testAccuracy": 78.07999849319458
     },
     {
         "config": [
@@ -33666,8 +33666,8 @@
             256
         ],
         "iteration": 2590,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.53250074386597,
+        "testAccuracy": 78.78999710083008
     },
     {
         "config": [
@@ -33679,8 +33679,8 @@
             16
         ],
         "iteration": 2591,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.32499814033508,
+        "testAccuracy": 79.24000024795532
     },
     {
         "config": [
@@ -33692,8 +33692,8 @@
             32
         ],
         "iteration": 2592,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.94749712944031,
+        "testAccuracy": 78.17000150680542
     },
     {
         "config": [
@@ -33705,8 +33705,8 @@
             64
         ],
         "iteration": 2593,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.28000259399414,
+        "testAccuracy": 77.95000076293945
     },
     {
         "config": [
@@ -33718,8 +33718,8 @@
             128
         ],
         "iteration": 2594,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.23749852180481,
+        "testAccuracy": 78.29999923706055
     },
     {
         "config": [
@@ -33731,8 +33731,8 @@
             256
         ],
         "iteration": 2595,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.01500034332275,
+        "testAccuracy": 78.57999801635742
     },
     {
         "config": [
@@ -33744,8 +33744,8 @@
             16
         ],
         "iteration": 2596,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.07250094413757,
+        "testAccuracy": 78.21999788284302
     },
     {
         "config": [
@@ -33757,8 +33757,8 @@
             32
         ],
         "iteration": 2597,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.07499837875366,
+        "testAccuracy": 78.35000157356262
     },
     {
         "config": [
@@ -33770,8 +33770,8 @@
             64
         ],
         "iteration": 2598,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.54750227928162,
+        "testAccuracy": 77.41000056266785
     },
     {
         "config": [
@@ -33783,8 +33783,8 @@
             128
         ],
         "iteration": 2599,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.2975025177002,
+        "testAccuracy": 77.64999866485596
     },
     {
         "config": [
@@ -33796,8 +33796,8 @@
             256
         ],
         "iteration": 2600,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 95.42250037193298,
+        "testAccuracy": 78.58999967575073
     },
     {
         "config": [
@@ -33809,8 +33809,8 @@
             16
         ],
         "iteration": 2601,
-        "trainingAccuracy": 0.0,
-        "testAccuracy": 0.0
+        "trainingAccuracy": 96.18250131607056,
+        "testAccuracy": 78.72999906539917
     },
     {
         "config": [
