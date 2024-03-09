@@ -11,6 +11,9 @@ from tensorflow.keras.regularizers import l1
 from tensorflow.keras.regularizers import l2
 import datetime
 import json
+import itertools
+import os
+
 
 
 
@@ -75,63 +78,88 @@ output_dim = [16, 32, 64]
 total_iterations = len(output_dim) * len(layerDepth)**5  # 5 nested loops of layerDepth
 current_iteration = 0
 
-# Iterate through every possible combination of output dimension and layer depths
-for outputDimChosen in output_dim:
-    for l1_depth in layerDepth:
-        for l2_depth in layerDepth:
-            for l3_depth in layerDepth:
-                for l4_depth in layerDepth:
-                    for l5_depth in layerDepth:
-                        # Increment the current iteration
-                        current_iteration += 1
 
-                        # Calculate iterations left
-                        iterations_left = total_iterations - current_iteration
+layerDepth = [16, 32, 64, 128, 256]
+output_dim = [16, 32, 64]
 
-                        # Print the current configuration and the progress
-                        print(f"Config: {outputDimChosen}, {l1_depth}, {l2_depth}, {l3_depth}, {l4_depth}, {l5_depth}")
-                        print(f"Iteration: {current_iteration}/{total_iterations} - Iterations left: {iterations_left}")
+# Generate all possible configurations
+configurations = [
+    {
+        "config": (output_dim_chosen, l1, l2, l3, l4, l5),
+        "iteration": i+1,  # Iteration numbers start at 1
+        "trainingAccuracy": None,  # Initially empty
+        "testAccuracy": None  # Initially empty
+    }
+    for i, (output_dim_chosen, l1, l2, l3, l4, l5) in enumerate(
+        itertools.product(output_dim, layerDepth, layerDepth, layerDepth, layerDepth, layerDepth)
+    )
+]
 
-                        # Create and compile the model with updated regularization strengths
-                        model = create_model(outputDimChosen, l1_depth, l2_depth, l3_depth, l4_depth, l5_depth)
-                        model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+# Set the starting iteration
+start_iteration = 2486
 
-                        # Train the model
-                        history = model.fit(X_train_padded, y_train, epochs=5, batch_size=2048, validation_data=(X_test_padded, y_test),verbose=0,shuffle=True)
+# Iterate through configurations starting from the specified iteration
+for config in configurations:  # Adjust for zero-based indexing
+    # Your code to train and evaluate the model here
+    # For example, replace the next two lines with your model training and evaluation
+    training_accuracy = 0.0  # Placeholder for actual training accuracy
+    test_accuracy = 0.0  # Placeholder for actual test accuracy
+    
+    # Update the configuration with actual results
+    config["trainingAccuracy"] = training_accuracy
+    config["testAccuracy"] = test_accuracy
+    
+    # Optional: print current progress or log it
+    print(f"Processed {config['iteration']} / {len(configurations)}")
 
-                        # Evaluate the model on test data
-                        loss, accuracy = model.evaluate(X_test_padded, y_test,verbose=0)
 
-                        # Extract the last training accuracy
-                        training_accuracy = history.history['accuracy'][-1] * 100  # Convert to percentage
+results_path = "model_configurations_with_results.json"
+with open(results_path, 'w') as file:
+    json.dump(configurations, file)
 
-                        # Check conditions (assuming the conditions mentioned before)
-                        test_accuracy_threshold = 78.6
-                        difference_threshold = 10.0
-                        actual_difference = abs(training_accuracy - accuracy * 100)
+print(f"We have initialized all iterations into json memory {results_path}.")
 
-                        print("Training_accuracy:"+str(training_accuracy))
-                        print("Testaccuracy:"+str(accuracy*100))
 
-                        if accuracy * 100 > test_accuracy_threshold and actual_difference < difference_threshold:
-                            # Save the model with a timestamp
-                            timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-                            model_path = f"model_{timestamp}.h5"
-                            model.save(model_path)
-                            print(f"Model saved as {model_path} because it met the criteria.")
 
-                            # Save the regularization weights to a text or JSON file
-                            regularization_weights = {
-                                'training_accuracy':training_accuracy,
-                                'test_accuracy':accuracy,
-                                'outputDimChosen':outputDimChosen, 
-                                'l1_depth':l1_depth, 
-                                'l2_depth':l2_depth, 
-                                'l3_depth':l3_depth, 
-                                'l4_depth':l4_depth, 
-                                'l5_depth':l5_depth
-                            }
-                            regularization_path = f"regularization_weights_{timestamp}.json"
-                            with open(regularization_path, 'w') as f:
-                                json.dump(regularization_weights, f)
-                            print(f"Regularization weights saved as {regularization_path}.")
+
+if os.path.exists("run.json"):
+    with open("run.json", 'r') as file:
+        # Load the existing configurations from run.json
+        saved_configurations = json.load(file)
+        
+        # Ensure the loaded configurations is not empty and is a list
+        if saved_configurations and isinstance(saved_configurations, list):
+            # Update your local configurations array
+            configurations = saved_configurations
+
+        print("We have updates json memory")
+else:
+    print("run.json not found. Starting from scratch.")
+
+
+for config in configurations[start_iteration - 1:]:  # Adjust for zero-based indexing
+    # Unpack the configuration directly, since it's already a tuple of integers
+    outputDimChosen, l1_depth, l2_depth, l3_depth, l4_depth, l5_depth = config["config"]
+    
+    # Create and compile the model
+    model = create_model(outputDimChosen, l1_depth, l2_depth, l3_depth, l4_depth, l5_depth)
+    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+    
+    # Train the model
+    history = model.fit(X_train_padded, y_train, epochs=5, batch_size=2048, validation_data=(X_test_padded, y_test), verbose=0, shuffle=True)
+    
+    # Evaluate the model on test data
+    loss, accuracy = model.evaluate(X_test_padded, y_test, verbose=0)
+    
+    # Update the configuration with actual results
+    config["trainingAccuracy"] = history.history['accuracy'][-1] * 100  # Convert to percentage
+    config["testAccuracy"] = accuracy * 100  # Convert to percentage
+    
+    # Open run.json file to append the result after each model evaluation
+    with open("run.json", "w") as file:
+        json.dump(configurations, file, indent=4)  # Use indent for better readability
+    
+    # Print current progress
+    print(f"Processed {config['iteration']} / {len(configurations)} - Config: {config['config']} - Training Acc: {config['trainingAccuracy']}, Test Acc: {config['testAccuracy']}")
+
+print("All configurations processed and results saved to run.json.")
