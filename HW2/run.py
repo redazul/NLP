@@ -162,4 +162,10 @@ for config in configurations[start_iteration - 1:]:  # Adjust for zero-based ind
     # Print current progress
     print(f"Processed {config['iteration']} / {len(configurations)} - Config: {config['config']} - Training Acc: {config['trainingAccuracy']}, Test Acc: {config['testAccuracy']}")
 
+    # Check if training accuracy is above 70% and the absolute difference between training and testing is below 6%
+    if training_accuracy > 70 and abs(training_accuracy - test_accuracy) < 6:
+        print("Stopping criteria met. Exiting loop.")
+        break  # Break out of the loop
+
+
 print("All configurations processed and results saved to run.json.")
