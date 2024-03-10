@@ -96,14 +96,24 @@ unique_vocab = len(set(combined_words_list))
 
 # Initialize the Tokenizer with the combined unique words
 tokenizer = Tokenizer(num_words=unique_vocab + 1, oov_token="<OOV>")
-tokenizer.fit_on_texts(combined_words_list)
+
+#tokenizer.fit_on_texts(combined_words_list)
+tokenizer.fit_on_texts(final_processed_sentences[0])
 
 # Convert the sentences to sequences
 sequences = tokenizer.texts_to_sequences(final_processed_sentences[0])
 padded_sequences = pad_sequences(sequences, maxlen=45, padding='post')
 
+
 # Convert sentiment labels to binary format
 labels = sentiments[0].apply(lambda x: 1 if x == "positive" else 0).values
+
+
+print("Sequence Review")
+print(final_processed_sentences[0][0])
+print(sequences[0])
+print(padded_sequences[0])
+
 
 # Split data into training and test sets
 X_train, X_test, y_train, y_test = train_test_split(padded_sequences, labels, test_size=0.4, random_state=42)
@@ -115,13 +125,13 @@ X_val, X_test, y_val, y_test = train_test_split(X_test, y_test, test_size=0.5, r
 model = Sequential([
     Embedding(input_dim=unique_vocab + 1, output_dim=100, input_length=45),
     Flatten(),
-    Dense(256, activation='relu', kernel_regularizer=l1_l2(l1=0.01, l2=0.01)),
+    Dense(256, activation='relu', kernel_regularizer=l1_l2(l1=0, l2=0)),
     Dropout(0.5),
-    Dense(128, activation='relu', kernel_regularizer=l1_l2(l1=0.01, l2=0.01)),
+    Dense(128, activation='relu', kernel_regularizer=l1_l2(l1=0, l2=0)),
     Dropout(0.5),
-    Dense(64, activation='relu', kernel_regularizer=l1_l2(l1=0.01, l2=0.01)),
+    Dense(64, activation='relu', kernel_regularizer=l1_l2(l1=0, l2=0)),
     Dropout(0.5),
-    Dense(32, activation='relu', kernel_regularizer=l1_l2(l1=0.01, l2=0.01)),
+    Dense(32, activation='relu', kernel_regularizer=l1_l2(l1=0, l2=0)),
     Dropout(0.5),
     Dense(1, activation='sigmoid')
 ])
@@ -137,9 +147,8 @@ batch_size = 32  # Batch size for training
 history = model.fit(X_train, y_train,
                     epochs=epochs,
                     batch_size=batch_size,
-                    validation_data=(X_val, y_val),
-                    verbose=2)
+                    validation_data=(X_val, y_val))
 
 # Evaluating the model on the test set
-test_loss, test_acc = model.evaluate(X_test, y_test, verbose=2)
+test_loss, test_acc = model.evaluate(X_test, y_test)
 print(f"Test Accuracy: {test_acc}")
