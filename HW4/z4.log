@@ -1,0 +1,29 @@
+Results from the saved model:
+input: this is such an amazing movie! : score: 0.998877
+input: The movie was great!           : score: 0.998542
+input: The movie was meh.             : score: 0.948349
+input: The movie was okish.           : score: 0.002243
+input: The movie was terrible...      : score: 0.001442
+input: This restaurant has the best pasta in town! : score: 0.991149
+input: I found the book to be quite boring and hard to finish. : score: 0.001664
+input: The customer service was okay, nothing special. : score: 0.001968
+input: My new laptop is absolutely phenomenal! : score: 0.003243
+input: My new laptop is so phenomenal! : score: 0.004206
+input: My new laptop is so phenomenal : score: 0.003189
+input: My new laptop is so extraordinary : score: 0.998643
+input: My new laptop is phenomenal!   : score: 0.004408
+input: My new laptop is so cool!      : score: 0.471611
+input: The concert was a total disappointment. : score: 0.001387
+input: The garden scent was overwhelming, not in a pleasant way. : score: 0.938254
+input: This new software update is a labyrinthine mess. : score: 0.001364
+input: The poetry reading was an unexpected delight, like discovering a hidden gem. : score: 0.998183
+input: The virtual reality experience was disorienting, felt too unreal. : score: 0.002126
+input: I fucking hate you             : score: 0.849471
+input: I fucking love you             : score: 0.994392
+input: I f***ing hate you             : score: 0.602385
+input: I f***ing love you             : score: 0.987163
+input: f**k you                       : score: 0.700762
+input: love you                       : score: 0.998762
+input: I hate how much I love you     : score: 0.944400
+input: Its frustrating how right you always are. : score: 0.986200
+
