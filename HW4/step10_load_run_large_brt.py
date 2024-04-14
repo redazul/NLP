@@ -6,7 +6,7 @@ import tensorflow_hub as hub
 import tensorflow_text as text
 import matplotlib.pyplot as plt
 
-reloaded_model = tf.saved_model.load('imdb_bert_new_op')
+reloaded_model = tf.saved_model.load('imdb_bert_large')
 
 
 

@@ -236,14 +236,10 @@ def build_classifier_model():
     net = outputs['pooled_output']
     net = tf.keras.layers.Dropout(0.1)(net)
 
-    # Existing dense layer
-    net = tf.keras.layers.Dense(128, activation='relu')(net)  # First added dense layer with ReLU activation
+    net = tf.keras.layers.Dense(128, activation='relu')(net)  
+    net = tf.keras.layers.Dense(64, activation='relu')(net)  
+    net = tf.keras.layers.Dense(32, activation='relu')(net)  
 
-    # Additional dense layers
-    net = tf.keras.layers.Dense(64, activation='relu')(net)  # Second added dense layer
-    net = tf.keras.layers.Dense(32, activation='relu')(net)  # Third added dense layer
-
-    # Final classifier layer
     net = tf.keras.layers.Dense(1, activation=None, name='classifier')(net)
     return tf.keras.Model(text_input, net)
 
